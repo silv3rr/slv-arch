@@ -27,7 +27,7 @@ Other features:
 
 ## Installation
 
-_Required: awk basename date find grep touch ls* (linux)_
+_Required: awk basename date find grep touch_
 
 1. Copy slv-arch.sh and conf file to /glftpd/bin
 2. Configure settings in conf file (**recommended**) or in script iself
