@@ -1,6 +1,6 @@
 # slv-archiver
 
-## Move releases from incoming to archive
+***Move completed releases from incoming to archive***
 
 Includes extra support for TV Series, 0DAY, MP3 and MV sections
 
@@ -12,36 +12,42 @@ Includes extra support for TV Series, 0DAY, MP3 and MV sections
 
     `/tv/Series.Name.S01E02-GRP -> /archive/tv/Series/S01`
 
-- Handles daydirs:
+- Also Handles daydirs:
 
     `/0day/0310 -> /archive/0day/2013-03`
 
     `/mp3/2013-03-10 -> /archive/mp3`
+
+---
 
 Other features:
 
 - Checks diskspace before moving
 - Move releases that are x days old or oldest x dirs
 - Use regular expressions to match releases
+- Audiosorts after moving mp3
 - Supports ".1 .2 .3" symlinks to multiple TV archive disks, like tur-links
 
 ## Installation
 
 _Required: awk basename date find grep touch_
 
-1. Copy slv-arch.sh and conf file to /glftpd/bin
+1. Copy "slv-arch.sh" and "slv-arch.conf" files to /glftpd/bin
 2. Configure settings in conf file (**recommended**) or in script iself
-3. Follow instructions included in "slv-arch.conf"
+3. Follow instructions included in [slv-arch.conf](slv-arch.conf)
 
-### Testing
+## Testing
 
 To test settings run `./slv-arch.sh debug`
 
-This does not actually mkdir and mv but only shows what actions the script would have executed.
+This does not actually `mkdir` and `mv` but only shows what actions the script would have executed.
 
-### Scheduling
+Even if there are no matches there should always be "POSTCHK" lines shown.
 
-If all works fine you should setup a daily crontab such as:
+
+## Scheduling
+
+If all works fine you should setup a (daily) crontab such as:
 
 `15 2 * * *      /glftpd/bin/slv-arch.sh >/dev/null 2>&1`
 
